@@ -21,8 +21,8 @@ import torchtext
 import pickle
 
 from torchtext.vocab import Vectors
-from appv1.bert import BertTokenizer, load_vocab
-from appv1.config import PKL_FILE, VOCAB_FILE, DATA_PATH
+from utils.bert import BertTokenizer, load_vocab
+from utils.config import PKL_FILE, VOCAB_FILE, DATA_PATH
 
 
 def get_chABSA_DataLoaders_and_TEXT(max_length=256, batch_size=32):
@@ -32,7 +32,7 @@ def get_chABSA_DataLoaders_and_TEXT(max_length=256, batch_size=32):
     np.random.seed(1234)
     random.seed(1234)
     # 単語分割用のTokenizerを用意
-    tokenizer_bert = BertTokenizer(vocab_file=VOCAB_FILE, do_lower_case=False)
+    tokenizer_bert = BertTokenizer(vocab_file="../vocab/vocab.txt", do_lower_case=False)
 
     def preprocessing_text(text):
         # 半角・全角の統一
